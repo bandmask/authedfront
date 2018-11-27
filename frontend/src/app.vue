@@ -1,19 +1,15 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">ExampleModule</router-link>
-    </div>
-    <router-view class="component-content" />
-    <Footer></Footer>
-    <div>{{this.$mq}}</div>
+    <router-view class="component-content"/>
   </div>
 </template>
 
 <script>
-import Footer from '@/modules/footer/Footer'
-
+import { ACTIONS } from '@/store/actions'
 export default {
-  components: { Footer }
+  mounted () {
+    this.$store.dispatch(ACTIONS.INIT)
+  }
 }
 </script>
 
@@ -27,23 +23,12 @@ body {
     text-align: center;
     color: #2c3e50;
 
-    #nav {
-      position: absolute;
-      top: 20px;
-      left: 50px;
-
-      padding: 10px;
-      a {
-        font-weight: bold;
-        color: #2c3e50;
-        &.router-link-exact-active {
-          color: #42b983;
-        }
-      }
-    }
-
     .component-content {
       padding: 20px 0px;
+      width: 500px;
+      margin: 100px auto;
+      border: 1px solid lightgray;
+      border-radius: 3px;
     }
 
     h1,

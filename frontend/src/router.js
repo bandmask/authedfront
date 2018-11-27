@@ -10,7 +10,7 @@ export default new Router({
     {
       path: '/',
       name: 'exampleModule',
-      component: () => import('@/modules/exampleModule/ExampleModule')
+      component: () => import('@/modules/register/Register')
     }
   ]
 })

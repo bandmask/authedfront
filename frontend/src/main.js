@@ -1,12 +1,12 @@
 import Vue from 'vue'
-import App from './App.vue'
 import vueMq from 'vue-mq'
 import router from './router'
-import store from './store'
+import store from './store/store'
 import media from './media'
+import App from './App'
 
 Vue.config.productionTip = false
-Vue.prototype.$appName = 'ropr.se'
+Vue.prototype.$appName = 'authed front'
 Vue.use(vueMq, media)
 
 new Vue({
