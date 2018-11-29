@@ -12,3 +12,5 @@ all commands:
 docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 docker rmi $(docker images -a -q)
+
+docker run -d --name authedfront -p "8080:49360" temp/authedfront

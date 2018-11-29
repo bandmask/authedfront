@@ -8,8 +8,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    userModel: {},
-    registerModel: {}
+    authInitiated: false,
+    userModel: {
+      loggedIn: false
+    },
+    registerModel: {},
+    verificationResult: null
   },
   mutations,
   actions,

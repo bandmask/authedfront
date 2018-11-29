@@ -1,5 +1,21 @@
 <template>
   <div id="app">
+    <div class="nav">
+      <router-link to="/">home</router-link>
+      <div v-if="vm.authInitiated" class="user-account">
+        <span>/</span>
+        <div v-if="vm.userModel.loggedIn" class="user">
+          <router-link to="/verifyUser" class="verify">verify</router-link>
+          <span>/</span>
+          <router-link to="/signout" class="signout">signout</router-link>
+        </div>
+        <div v-else>
+          <router-link to="/signin">signin</router-link>
+          <span>/</span>
+          <router-link to="/register" class="register">register</router-link>
+        </div>
+      </div>
+    </div>
     <router-view class="component-content"/>
   </div>
 </template>
@@ -9,6 +25,17 @@ import { ACTIONS } from '@/store/actions'
 export default {
   mounted () {
     this.$store.dispatch(ACTIONS.INIT)
+  },
+  computed: {
+    vm () {
+      return this
+    },
+    authInitiated () {
+      return this.$store.state.authInitiated
+    },
+    userModel () {
+      return this.$store.state.userModel
+    }
   }
 }
 </script>
@@ -23,10 +50,23 @@ body {
     text-align: center;
     color: #2c3e50;
 
+    .nav {
+      display: block;
+      padding: 20px 0;
+
+      & div {
+        display: inline;
+      }
+
+      & span {
+        margin: 0 4px;
+      }
+    }
+
     .component-content {
       padding: 20px 0px;
       width: 500px;
-      margin: 100px auto;
+      margin: 80px auto;
       border: 1px solid lightgray;
       border-radius: 3px;
     }

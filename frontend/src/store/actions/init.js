@@ -1,5 +1,8 @@
 import auth from '@/auth'
 
 export default context => {
-  auth.init()
+  if (auth.init()) {
+    context.state.userModel.loggedIn = true
+  }
+  context.state.authInitiated = true
 }
